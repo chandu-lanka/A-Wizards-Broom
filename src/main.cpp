@@ -1,8 +1,13 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "headers/Game.h"
+#include "headers/Imports.h"
 
 int main()
 {
-    std::cout << "It Works";
+    Game game;
+    while (game.getWindow().isOpen())
+    {
+        game.update();
+        game.render();    
+    }
     return 0;
 }
