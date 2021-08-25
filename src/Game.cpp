@@ -1,25 +1,22 @@
-// std
-#include "iostream"
-#include "ctime"
-#include "cstdlib"
-#include "time.h"
-
-// SFML
-#include "SFML/System.hpp"
-#include "SFML/Graphics.hpp"
-#include "SFML/Audio.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/Network.hpp"
-
 // custom headers
 #include "Game.h"
 
-void Game::initWindow(int width, int height)
+Game::Game()
 {
-    this->window.create(sf::VideoMode(width, height),"A Wizards Broom", sf::Style::Close | sf::Style::Titlebar);
+    this->initWindow();
 }
 
-const sf::RenderWindow & Game::getWindow() const
+Game::~Game()
+{
+
+}
+
+void Game::initWindow()
+{
+    this->window.create(sf::VideoMode(800, 600),"A Wizards Broom", sf::Style::Close | sf::Style::Titlebar);
+}
+
+sf::RenderWindow & Game::getWindow()
 {
     return this->window;
 }
@@ -32,14 +29,4 @@ void Game::update()
 void Game::render()
 {
     
-}
-
-Game::Game()
-{
-    this->initWindow(800, 600);
-}
-
-Game::~Game()
-{
-
 }

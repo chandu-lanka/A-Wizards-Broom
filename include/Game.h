@@ -8,20 +8,17 @@
 // SFML
 #include "SFML/System.hpp"
 #include "SFML/Graphics.hpp"
-#include "SFML/Audio.hpp"
 #include "SFML/Window.hpp"
-#include "SFML/Network.hpp"
-
 
 class Game
 {
-public:    
+public:
     Game();
     virtual ~Game();
-    const sf::RenderWindow& getWindow() const;
+    sf::RenderWindow& getWindow();
     void update();
     void render();
 private:
     sf::RenderWindow window;
-    void initWindow(int width, int height);
+    void initWindow();
 };
