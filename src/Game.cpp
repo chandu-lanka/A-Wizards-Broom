@@ -9,7 +9,7 @@ Game::Game()
 
 Game::~Game()
 {
-    delete this->player;
+    //delete this->player;
 }
 
 void Game::initPlayer()
@@ -19,7 +19,8 @@ void Game::initPlayer()
 
 void Game::initWindow()
 {
-    this->window.create(sf::VideoMode(800, 600),"A Wizards Broom", sf::Style::Close | sf::Style::Titlebar);
+    this->window.create(sf::VideoMode(1280, 720),"A Wizards Broom", sf::Style::Close | sf::Style::Titlebar);
+    this->window.setFramerateLimit(60);
 }
 
 sf::RenderWindow & Game::getWindow()
@@ -56,13 +57,10 @@ void Game::renderPlayer()
 
 void Game::render()
 {
-    this->window.clear();
+    this->window.clear(sf::Color::White);
     
     // Render Game
     this->renderPlayer();
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-    this->window.draw(shape);
 
     this->window.display();
 }

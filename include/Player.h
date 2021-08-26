@@ -16,17 +16,24 @@ class Player{
         ~Player();
         void update();
         void render(sf::RenderTarget& target);
+        void movement();
+        void animations();
     private:
         sf::Sprite sprite;
         sf::Texture texture;
-
+        bool moving;
+        sf::Clock animationTimer;
+        
         // Animations
+        sf::IntRect currentFrame;
 
         // Movement
 
         // Core
 
         // Functions
+        void init();
         void initTexture();
         void initSprite();
+        void initAnimations();
 };
