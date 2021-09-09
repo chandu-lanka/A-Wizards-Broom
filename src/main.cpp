@@ -1,14 +1,11 @@
-// custom headers
-#include "Game.h"
+#include <iostream>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
-int main()
+int main(int argc, char* argv[])
 {
-    srand(static_cast<unsigned>(time(0)));
-    Game game;
-    while (game.getWindow().isOpen())
-    {
-        game.update();
-        game.render(); 
-    }
+    std::cout << "sdl-boilerplate is working..." << std::endl;
+    std::cin.get();
+    
     return 0;
 }
