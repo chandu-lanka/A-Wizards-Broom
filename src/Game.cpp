@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "TextureManager.hpp"
 
 SDL_Texture* playerTex;
 
@@ -31,9 +32,7 @@ void Game::init(const char* title, int x, int y, int width, int height, bool ful
         isRunning = false;
     }
 
-    SDL_Surface* playerSurface = IMG_Load("bin/res/Wizard/Idle/Wizard-Idle1.png");
-    playerTex = SDL_CreateTextureFromSurface(renderer,playerSurface);
-    SDL_FreeSurface(playerSurface);
+    playerTex = TextureManager::LoadTexture("bin/res/Wizard.png",renderer);
 }
 
 void Game::handleEvents() {
