@@ -1,12 +1,25 @@
 #include "Game.hpp"
-#include "TextureManager.hpp"
-
-SDL_Texture* playerTex;
 
 Game::Game() {}
 Game::~Game() {}
 
-// functions
+// Texture Functions
+SDL_Texture* Game::LoadTexture(const char* filePath) {
+    SDL_Texture* texture = NULL;
+    texture = IMG_LoadTexture(renderer, filePath);
+
+    if (texture == NULL) {
+        std::cout << "Img Failed To Load. Error: " << SDL_GetError() << std::endl;
+    }
+
+    return texture;
+}
+
+void Game::RenderTexture(SDL_Texture* tex) {
+    SDL_RenderCopy(renderer, tex, NULL, NULL);
+}
+
+// Main Functions
 void Game::init(const char* title, int x, int y, int width, int height, bool fullScreen) {
     int flags = 0;
 
@@ -31,8 +44,6 @@ void Game::init(const char* title, int x, int y, int width, int height, bool ful
     } else {
         isRunning = false;
     }
-
-    playerTex = TextureManager::LoadTexture("bin/res/Wizard.png",renderer);
 }
 
 void Game::handleEvents() {
@@ -50,7 +61,6 @@ void Game::update() {}
 
 void Game::render() {
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, playerTex, NULL, NULL);
     SDL_RenderPresent(renderer);
 }
 
@@ -58,4 +68,12 @@ void Game::clean() {
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_QUIT;
+}
+
+void Game::clear() {
+    SDL_RenderClear(renderer);
+}
+
+void Game::display() {
+    SDL_RenderPresent(renderer);
 }
